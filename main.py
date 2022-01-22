@@ -31,9 +31,13 @@ if __name__ == "__main__":
     NUM_EPOCHS = 10
     LR = 2e-4
 
-    model, loss_total = util.training(model, train_dl, NUM_EPOCHS, loss_fn, LR)
+    # model, loss_total = util.training(model, train_dl, NUM_EPOCHS, loss_fn, LR)
 
-    torch.save(model.state_dict(), "model_cnn_classif.pt")
+    # torch.save(model.state_dict(), "model_cnn_classif.pt")
 
+    # acc = util.eval_cnn_classifier(model, test_dl, "cpu")
+    # print("Accuracy of the network on the test images: {:.03f}%".format(acc))
+
+    model.load_state_dict(torch.load("model_cnn_classif.pt"))
     acc = util.eval_cnn_classifier(model, test_dl, "cpu")
     print("Accuracy of the network on the test images: {:.03f}%".format(acc))

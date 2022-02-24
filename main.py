@@ -40,7 +40,6 @@ def main() -> None:
         torch.save(model.state_dict(), args.out_model)
 
     elif subparser == "eval":
-
         model.load_state_dict(torch.load(args.in_model))
 
     acc = util.eval_cnn_classifier(model, test_dl, "cpu")

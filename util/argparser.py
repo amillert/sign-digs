@@ -3,6 +3,10 @@ import sys
 
 
 def get_cli_args():
+    """
+    Function returning a list of arguments extracted + a subparser
+    """
+
     args = sys.argv[1:]
     argument_parser = argparse.ArgumentParser(
         prog="sign digits detection",
@@ -13,6 +17,7 @@ def get_cli_args():
 
     subparsers = argument_parser.add_subparsers()
 
+    # [[train_subparser]] defines arguments used for model training
     train_subparser = subparsers.add_parser("train", help="Subparser for CNN training.")
 
     train_subparser.add_argument(
@@ -64,6 +69,7 @@ def get_cli_args():
         required=True,
     )
 
+    # [[eval_subparser]] defines arguments used for model evaluation
     eval_subparser = subparsers.add_parser("eval", help="Subparser for CNN evaluation.")
 
     eval_subparser.add_argument(

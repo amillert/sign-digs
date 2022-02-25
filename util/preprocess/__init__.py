@@ -10,9 +10,20 @@ import util
 
 
 class CustomImageDataset(Dataset):
+    """
+    Dataset for reading and iterating through the data
+    """
+
+    # defines a type for storing [[torch.Tensor]] in a list
     TensorList = List[torch.Tensor]
 
     def __init__(self, path: str) -> None:
+        """
+        transformation operations:
+          - convert to grayscale,
+          - resize image,
+          - convert to tensor
+        """
         self.transform = Compose([Grayscale(3), Resize(64), ToTensor()])
         self.images, self.labels = self.load(path)
 
@@ -20,6 +31,10 @@ class CustomImageDataset(Dataset):
         self.len = len(self.labels)
 
     def load(self, path: str) -> Tuple[TensorList, TensorList]:
+        """
+        Loads the data stored in files
+        Returns images and their labels respectively
+        """
         images, labels = [], []
 
         for digit in range(10):

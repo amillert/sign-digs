@@ -2,6 +2,10 @@ import torch.nn as nn
 
 
 class SignDigitsCNN(nn.Module):
+    """
+    CNN model used for sign digits image classification
+    """
+
     def __init__(self):
         super().__init__()
         self.network = nn.Sequential(
@@ -24,4 +28,8 @@ class SignDigitsCNN(nn.Module):
         )
 
     def forward(self, xs):
+        """
+        Forward pass through the network
+        """
+
         return self.network(xs)
